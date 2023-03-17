@@ -17,3 +17,26 @@ export * from "./external";
 export { mod as z };
 export default mod;
 ```
+
+```ts
+// import { createSymbolRecord } from '@mild-ts/constant';
+
+type TupleToObjectSymbol<T extends readonly string[]> = {
+  [K in T[number]]: ReturnType<typeof Symbol.for>;
+}
+
+function createSymbolRecord<const T extends readonly string[]>(...keys: T): TupleToObjectSymbol<T>{
+  return keys.reduce((result: any, v: string) => {
+    result[v] = Symbol.for(v);
+    return result;
+  }, {});
+}
+
+export const Tokens = createSymbolRecord('HealthAlertOption', 'SlackOption');
+
+// Equal to 
+export const Tokens = {
+  HealthAlertOption: Symbol.for('HealthAlertOption'),
+  SlackOption: Symbol.for('SlackOption'),
+}
+```
