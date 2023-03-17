@@ -34,6 +34,7 @@
     "url": "https://github.com/mildronize/utils.git"
   },
   "publishConfig": {
+    "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "ava": {
