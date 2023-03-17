@@ -1,9 +1,12 @@
 # @mild-ts/utils
 
+Opinionated TypeScript Utility Libraries [@mild-ts](https://github.com/mildronize/mild-ts)
+
+[![CI](https://github.com/mildronize/utils/actions/workflows/main.yml/badge.svg)](https://github.com/mildronize/utils/actions/workflows/main.yml)
 
 ## Installation
 ```
-npm i @mild-ts
+npm i @mild-ts/utils
 ```
 
 ### Examples
