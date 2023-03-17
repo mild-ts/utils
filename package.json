@@ -6,8 +6,9 @@
   "module": "./dist/main.mjs",
   "types": "./dist/main.d.ts",
   "scripts": {
-    "prepublish": "run-s lint test build",
+    "all": "run-s lint test build",
     "build": "tsup src/main.ts --dts --format esm,cjs",
+    "release": "npm run build && changeset publish",
     "lint": "tsc --noEmit",
     "test": "ava"
   },
