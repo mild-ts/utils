@@ -5,8 +5,7 @@
   "scripts": {
     "format": "prettier --write '**/*.ts'"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "author": "Thada Wangthammang",
   "license": "MIT",
   "repository": {
@@ -14,16 +13,17 @@
     "url": "https://github.com/mildronize/nammatham.git"
   },
   "devDependencies": {
-    "esbuild-register": "^3.4.2",
+    "@changesets/cli": "^2.26.0",
     "@type-challenges/utils": "^0.1.1",
     "@types/node": "^18.11.18",
     "ava": "^5.1.1",
     "c8": "^7.12.0",
+    "esbuild-register": "^3.4.2",
     "nx": "^15.6.1",
     "prettier": "^2.8.3",
-    "tsx": "^3.12.3",
     "ts-node": "^10.9.1",
     "tsup": "^6.6.3",
+    "tsx": "^3.12.3",
     "typescript": "^5.0.2"
   },
   "publishConfig": {

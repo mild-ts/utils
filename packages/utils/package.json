@@ -7,7 +7,11 @@
   "types": "./dist/main.d.ts",
   "scripts": {
     "build": "tsup main.ts --dts --format esm,cjs",
+    "lint": "tsc",
     "test": "ava"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.2"
   },
   "keywords": [],
   "author": "Thada Wangthammang",
