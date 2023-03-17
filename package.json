@@ -1,0 +1,32 @@
+{
+  "name": "mild-ts",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "format": "prettier --write '**/*.ts'"
+  },
+  "keywords": [
+  ],
+  "author": "Thada Wangthammang",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mildronize/nammatham.git"
+  },
+  "devDependencies": {
+    "esbuild-register": "^3.4.2",
+    "@type-challenges/utils": "^0.1.1",
+    "@types/node": "^18.11.18",
+    "ava": "^5.1.1",
+    "c8": "^7.12.0",
+    "nx": "^15.6.1",
+    "prettier": "^2.8.3",
+    "tsx": "^3.12.3",
+    "ts-node": "^10.9.1",
+    "tsup": "^6.6.3",
+    "typescript": "^5.0.2"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}

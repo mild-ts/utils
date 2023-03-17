@@ -1,0 +1,23 @@
+{
+  "name": "@mild-ts/utils",
+  "version": "0.1.0",
+  "description": "",
+  "main": "./dist/main.js",
+  "module": "./dist/main.mjs",
+  "types": "./dist/main.d.ts",
+  "scripts": {
+    "build": "tsup main.ts --dts --format esm,cjs",
+    "test": "ava"
+  },
+  "keywords": [],
+  "author": "Thada Wangthammang",
+  "license": "MIT",
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "esbuild-register"
+    ]
+  }
+}
