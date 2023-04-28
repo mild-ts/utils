@@ -9,6 +9,9 @@ Opinionated TypeScript Utility Libraries [@mild-ts](https://github.com/mildroniz
 npm i @mild-ts/utils
 ```
 
+## Related Utils Library
+- [just](https://github.com/angus-c/just) A library of dependency-free JavaScript utilities that do just one thing.
+
 ### Examples
 ```ts
 import { createSymbolRecord } from '@mild-ts/utils';
