@@ -1,5 +1,11 @@
 # @mild-ts/utils
 
+## 0.2.1
+
+### Patch Changes
+
+- ea6f56e: Release dist
+
 ## 0.2.0
 
 ### Minor Changes
