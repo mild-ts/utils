@@ -2,9 +2,10 @@ import test from 'ava';
 import { Retry, retry } from './retry';
 
 const retryInstance = new Retry({
-  maxAttempts: 1,
+  maxAttempts: 2,
   minSeconds: 0,
   maxSeconds: 1,
+  verbose: false,
 });
 
 test('test retry', async t => {
@@ -17,6 +18,7 @@ test('test retry', async t => {
 
 test('test retry with error', async t => {
   const action = async () => {
+    console.log(`Start action`);
     throw new Error('error');
   };
   const error = await t.throwsAsync(() => retry(action, { retryInstance }));

@@ -13,6 +13,8 @@ interface RetryOption {
   maxSeconds: number;
   logger: (...args: any[]) => void;
   retryInstance: Retry;
+  verbose: boolean;
+  debug: boolean;
 }
 
 export class Retry implements RetryOption {
@@ -21,6 +23,8 @@ export class Retry implements RetryOption {
   readonly maxSeconds: number;
   readonly logger: (...args: any[]) => void;
   readonly retryInstance: Retry;
+  readonly verbose: boolean;
+  readonly debug: boolean;
 
   constructor(option?: Partial<RetryOption>) {
     option = option ?? {};
@@ -28,13 +32,16 @@ export class Retry implements RetryOption {
     this.minSeconds = option.minSeconds !== undefined ? Math.floor(option.minSeconds) : defaultMinSeconds;
     this.maxSeconds = option.maxSeconds !== undefined ? Math.floor(option.maxSeconds) : defaultMaxSeconds;
     this.logger = option.logger ?? console.log;
+    this.verbose = option.verbose ?? true;
+    this.debug = option.debug ?? false;
     this.retryInstance = option.retryInstance ?? this;
+
     const { minSeconds, maxSeconds, maxAttempts } = this.retryInstance;
     if (minSeconds > maxSeconds) {
-      throw new Error(`min=${minSeconds} seconds should be less than or equal to max=${maxSeconds} seconds`);
+      throw new Error(`min (${minSeconds}) seconds should be less than or equal to max (${maxSeconds}) seconds`);
     }
-    this.retryInstance.logger(
-      `Init Retry Helper with min=${minSeconds}, max=${maxSeconds}, maxAttempts=${maxAttempts}`
+    this.retryInstance.log(
+      `Initial Retry Helper with min=${minSeconds}, max=${maxSeconds}, maxAttempts=${maxAttempts}`
     );
   }
 
@@ -44,19 +51,32 @@ export class Retry implements RetryOption {
       // Try
       try {
         return await action();
-      } catch (err) {
-        this.retryInstance.logger((err as any)?.message);
+      } catch (err: unknown) {
+        if(err instanceof Error){
+          this.retryInstance.log(`Retry attempt ${attempt} failed with error: ${err.message}`);
+        }
+        this.retryInstance.debugLog(err);
       }
 
       // Sleep
       const seconds = randomInt(this.retryInstance.minSeconds, this.retryInstance.maxSeconds);
-      this.retryInstance.logger(`Waiting ${seconds} seconds before trying again, (attempt ${attempt})`);
+      this.retryInstance.log(`Waiting ${seconds} seconds before trying again, (attempt ${attempt})`);
       await delayInSeconds(seconds);
       attempt++;
     }
 
     // Last attempt
     return await action();
+  }
+
+  protected log(...arg: any[]) {
+    if (this.retryInstance.verbose)
+      this.retryInstance.logger(...arg);
+  }
+
+  protected debugLog(...arg: any[]) {
+    if (this.retryInstance.debug)
+      this.retryInstance.logger(...arg);
   }
 }
 
