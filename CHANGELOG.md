@@ -1,5 +1,11 @@
 # @mild-ts/utils
 
+## 0.3.0
+
+### Minor Changes
+
+- 5faa9ec: Improve Retry API and add retry function helper
+
 ## 0.2.1
 
 ### Patch Changes
