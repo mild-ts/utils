@@ -14,7 +14,8 @@
     "build": "tsup src/main.ts --dts --format esm,cjs",
     "release": "npm run build && changeset publish",
     "lint": "tsc --noEmit",
-    "test": "ava"
+    "test": "ava",
+    "test:watch": "ava --watch"
   },
   "peerDependencies": {
     "typescript": "^5.0.2"
