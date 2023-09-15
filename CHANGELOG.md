@@ -1,5 +1,11 @@
 # @mild-ts/utils
 
+## 0.3.1
+
+### Patch Changes
+
+- fca2959: remove peer deps for typescript
+
 ## 0.3.0
 
 ### Minor Changes
