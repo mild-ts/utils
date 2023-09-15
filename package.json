@@ -17,9 +17,6 @@
     "test": "ava",
     "test:watch": "ava --watch"
   },
-  "peerDependencies": {
-    "typescript": "^5.0.2"
-  },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
     "@types/node": "^18.11.18",
